@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Python Web Runner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="badge">Python Runner · Live Output · AI Auto-Fix</p>
+        <h1>Run Python in the browser.</h1>
+        <p class="sub">
+          Paste code, run it, watch output appear live, or let AI repair the code and try again.
+        </p>
+      </div>
+
+      <div class="status-card">
+        <div class="status-title">Status</div>
+        <div id="statusBadge" class="status-badge idle">Idle</div>
+        <div id="jobInfo" class="job-info">No job running</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Editor</h2>
+          <div class="actions">
+            <button class="ghost" id="sampleBtn">Load Sample</button>
+            <button class="ghost" id="clearBtn">Clear</button>
+          </div>
+        </div>
+
+        <textarea id="codeInput" spellcheck="false" placeholder="Paste Python code here...">print("Hello from the web runner!")
+for i in range(3):
+    print("tick", i)</textarea>
+
+        <div class="run-row">
+          <button id="runBtn" class="primary">Run</button>
+          <button id="fixBtn" class="primary alt">Auto-Fix & Run</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Live Output</h2>
+          <button id="stopViewBtn" class="ghost">Stop Polling</button>
+        </div>
+        <pre id="outputBox" class="console">Your output will appear here.</pre>
+      </div>
+    </section>
+
+    <section class="panel bottom">
+      <div class="panel-head">
+        <h2>Auto-Fix Result</h2>
+      </div>
+      <pre id="fixedCodeBox" class="console small">Fixed code will appear here after auto-fix.</pre>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
